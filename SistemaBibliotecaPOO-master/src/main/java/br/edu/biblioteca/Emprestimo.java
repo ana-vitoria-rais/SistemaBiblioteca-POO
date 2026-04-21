@@ -63,7 +63,7 @@ public class Emprestimo {
             System.out.println("Dias de atraso: " + diasAtraso);
             System.out.println("Multa: R$ " + multa);
         } else {
-            System.out.println("Livro devolvido no prazo.");
+            System.out.println("Livro devolvido no prazo.Obrigado!");
         }
     }
 }
