@@ -161,8 +161,12 @@ public class LivroDAOImpl implements LivroDAO {
     private List<Livro> removerDuplicados(List<Livro> livros) {
         LinkedHashMap<String, Livro> unicos = new LinkedHashMap<>();
         for (Livro livro : livros) {
-            String chave = livro.getTitulo() + "|" + livro.getAutor() + "|" + livro.ehDisponivel();
-            unicos.putIfAbsent(chave, livro);
+            String chave = livro.getTitulo() + "|" + livro.getAutor();
+            Livro existente = unicos.get(chave);
+
+            if (existente == null || (!existente.ehDisponivel() && livro.ehDisponivel())) {
+                unicos.put(chave, livro);
+            }
         }
         return new ArrayList<>(unicos.values());
     }
